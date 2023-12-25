@@ -1,7 +1,8 @@
 import React from 'react';
 import { Dragon } from '../../../types';
 import { Link } from 'react-router-dom';
-import { DRAGONS_ROUTE } from '../../utils/constants';
+import { DRAGONS_ROUTE } from '../../utils/constantsRouts';
+
 
 interface DragonCardProps {
     dragon : Dragon

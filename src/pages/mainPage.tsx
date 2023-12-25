@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import Header from "../components/header";
 import MainCardComponent from "../components/main-card-component";
-import { DRAGONS_ROUTE, SHIPS_ROUTE } from "../utils/constants";
+import { DRAGONS_ROUTE, SHIPS_ROUTE } from "../utils/constantsRouts";
+
 
 const MainPage = () => {
   return (

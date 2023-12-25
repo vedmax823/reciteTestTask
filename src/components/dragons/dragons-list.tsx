@@ -1,28 +1,23 @@
-import axios from "axios";
-import React, { useCallback } from "react";
-import { useRequest } from "../../hooks/useRequest";
 import { Dragon } from "../../../types";
+import NothingFound from "../nothing-found";
 import DragonCard from "./dragon-card";
 
-const DragonsList = () => {
-  const request = useCallback(
-    () => axios.get(`${process.env.REACT_APP_BASE_URL}/dragons`),
-    []
-  );
+interface DragonsListProps {
+  dragons: Dragon[];
+}
 
-  const [dragons, error, loading] = useRequest<Dragon[]>(request);
-
-  if (loading) return <div>Loading...</div>;
-
-  if (error) return <div>Error</div>;
+const DragonsList = ({ dragons }: DragonsListProps) => {
   return (
-    <div className="w-full">
-      <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-4 p-2">
-        {dragons &&
-          dragons.map((dragon) => (
+    <div className="w-full flex justify-center">
+      {dragons.length == 0 ? (
+        <NothingFound />
+      ) : (
+        <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-4 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-4 p-2 max-w-screen-xl">
+          {dragons.map((dragon) => (
             <DragonCard key={dragon.id} dragon={dragon} />
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

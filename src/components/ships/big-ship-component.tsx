@@ -1,30 +1,16 @@
-import axios from "axios";
-import { useCallback } from "react";
-import { useRequest } from "../../hooks/useRequest";
 import { Ship } from "../../../types";
 import LinkButton from "../ui/link-button";
 import SmallMissionComponent from "./small-mission-component";
 
 interface BigShipProps {
-  shipId: string;
+  ship: Ship;
 }
 
-const BigShipComponent = ({ shipId }: BigShipProps) => {
-  const request = useCallback(
-    () => axios.get(`${process.env.REACT_APP_BASE_URL}/ships/${shipId}`),
-    [shipId]
-  );
+const BigShipComponent = ({ ship }: BigShipProps) => {
 
-  const [ship, error, loading] = useRequest<Ship>(request);
-
-  if (loading) return <div>Loading...</div>;
-
-  if (error) return <div>Error</div>;
-
-  if (!ship) return <div>Not Found</div>;
   return (
     <div className="mt-2 grid grid-cols-2 p-2">
-      <div className="w-full h-68 overflow-hidden bg-gray-200 ">
+      <div className="w-full h-68 overflow-hidden  ">
         <img src={ship.image} alt={ship.ship_name} className="w-full object-fill" />
       </div>
       <div className="p-2">

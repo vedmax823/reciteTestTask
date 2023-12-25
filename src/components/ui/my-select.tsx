@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import { ShipsTypesOptions } from "../../../types";
+import { SelectOptionsType } from "../../../types";
 
 interface MySelectProps {
-  title: string;
-  selectedValue?: string;
-  selectOptions: ShipsTypesOptions[];
-  onChange: (value: string | undefined) => void;
+  title?: string;
+  selectedValue?: string | number;
+  selectOptions: SelectOptionsType[];
+  onChange: (value?: string) => void;
 }
 
 const MySelect = ({
@@ -14,9 +14,8 @@ const MySelect = ({
   selectOptions,
   onChange,
 }: MySelectProps) => {
-
   const MyOnChange = (value: string) => {
-    const newValue = value !== title ? value : undefined 
+    const newValue = value !== title ? value : undefined;
     onChange(newValue);
   };
   return (
@@ -26,7 +25,7 @@ const MySelect = ({
         value={selectedValue}
         onChange={(e) => MyOnChange(e.target.value)}
       >
-        <option>{title}</option>
+        {title ? <option>{title}</option> : null}
         {selectOptions.map((type) => (
           <option value={type.value} key={type.value}>
             {type.name}

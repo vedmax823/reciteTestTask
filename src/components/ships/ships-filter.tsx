@@ -1,15 +1,16 @@
 
 import MySelect from "../ui/my-select";
 import { shipsRoles, shipsTypes } from "../../utils/constants";
-import { FiltersShipsType } from "../../pages/shipsPage";
+import { FiltersShipsType } from "../../../types";
+
 
 interface ShipsFilterProps {
-  filterShipType: FiltersShipsType;
+  filterShip: FiltersShipsType;
   handleChangeShip: (field : string, value?: string) => void;
 }
 
 const ShipsFilter = ({
-  filterShipType,
+  filterShip,
   handleChangeShip,
 }: ShipsFilterProps) => {
   const handleChangeRole = (value? : string) => {
@@ -19,11 +20,11 @@ const ShipsFilter = ({
     handleChangeShip('ship_type', value)
   }
   return (
-    <div className="w-full flex justify-end">
+    <div className="flex justify-end max-w-screen-xl">
       <div className="w-fit m-2">
         <MySelect
           title="Select ship role"
-          selectedValue={filterShipType.role}
+          selectedValue={filterShip.role}
           selectOptions={shipsRoles}
           onChange={handleChangeRole}
         />
@@ -31,7 +32,7 @@ const ShipsFilter = ({
       <div className="w-fit m-2">
         <MySelect
           title="Select ship type"
-          selectedValue={filterShipType.ship_type}
+          selectedValue={filterShip.ship_type}
           selectOptions={shipsTypes}
           onChange={handleChangeShipType}
         />

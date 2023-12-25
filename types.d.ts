@@ -5,7 +5,6 @@ export type Ship = {
   roles: string[];
   year_built: number;
   home_port: string;
-
   missions: MissionSmall[];
   url: string;
   image: string;
@@ -16,9 +15,9 @@ type MissionSmall = {
   flight: number;
 };
 
-export type ShipsTypesOptions = {
-  name: string;
-  value: string;
+export type SelectOptionsType = {
+  name: string | number;
+  value: string | number;
 };
 
 export type Dragon = {
@@ -30,3 +29,14 @@ export type Dragon = {
   wikipedia: string;
   description: string;
 };
+
+export type FitersPageLimit = {
+  limit : number,
+  offset : number
+  
+}
+
+export type FiltersShipsType = {
+  role? : string,
+  ship_type? : string
+} & FitersPageLimit

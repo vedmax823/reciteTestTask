@@ -10,7 +10,6 @@ const Galerry = ({ images, name }: GallaryProps) => {
     setMainImage(image)
   }
 
-
   return (
     <div>
       <div className="w-full h-68 overflow-hidden bg-gray-200 ">
